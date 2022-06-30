@@ -4,7 +4,7 @@
 
 import mongoose from "mongoose";
 
-export interface IPet {
+ export interface IPet {
   name: string;
   type: string;
   age: number;

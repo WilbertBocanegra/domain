@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 /**
  *
  */
-interface IBook {
+export interface IBook {
   name: string;
   author: string;
   editorial: string;

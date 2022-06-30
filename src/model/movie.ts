@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 /**
  * @interface - interface to Movie collection
  */
-interface IMovie {
+export interface IMovie {
   name: string;
   author: string;
   duration: number;
