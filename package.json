@@ -1,0 +1,22 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.18",
+    "tsm": "^2.2.1"
+  },
+  "dependencies": {
+    "@tinyhttp/app": "^2.0.22",
+    "milliparsec": "^2.2.2",
+    "mongoose": "^6.4.1"
+  },
+  "type": "module"
+}
