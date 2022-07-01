@@ -5,7 +5,7 @@
 import mongoose from "mongoose";
 
 /**
- *
+ * @interface - book data
  */
 export interface IBook {
   name: string;
@@ -15,16 +15,21 @@ export interface IBook {
 }
 
 /**
- *
+ * @description schema book for db
  */
-const bookSchema = new mongoose.Schema<IBook>({
-  name: String,
-  author: String,
-  editorial: String,
-  age: Number,
-});
+const bookSchema = new mongoose.Schema<IBook>(
+  {
+    name: String,
+    author: String,
+    editorial: String,
+    age: Number,
+  },
+  {
+    versionKey: false,
+  }
+);
 
 /**
  * @exports - export model of Book collection
  */
-export default mongoose.model("Book", bookSchema);
+export default mongoose.model<IBook>("Book", bookSchema);

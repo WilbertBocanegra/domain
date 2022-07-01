@@ -3,6 +3,7 @@
  */
 
 import mongoose from "mongoose";
+import { UserEnum } from "../enum/index";
 
 /**
  * @interface typing user model
@@ -14,11 +15,16 @@ export interface IUser {
   password: string;
 }
 
+interface IResponseIsExist {
+  isExist: UserEnum;
+  data?: IUser;
+}
+
 /**
  * @interface interface to ADD model callbacks
  */
 interface IUserModel extends mongoose.Model<IUser> {
-  isExist(email: string): Promise<boolean>;
+  isExist(email: string): Promise<IResponseIsExist>;
 }
 
 /**
@@ -38,13 +44,18 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>({
  */
 userSchema.statics.isExist = async function isExist(
   email: string
-): Promise<boolean> {
+): Promise<IResponseIsExist> {
   const isExist = await this.findOne({ email });
 
   if (!isExist) {
-    return false;
+    return {
+      isExist: UserEnum.noExist,
+    };
   }
-  return true;
+  return {
+    isExist: UserEnum.isExist,
+    data: isExist,
+  };
 };
 
 /**
